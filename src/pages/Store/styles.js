@@ -7,7 +7,7 @@ export const Container = styled.main`
 
   @media(min-width: 768px) {
     margin: 0 auto;
-    width: 50%;
+    width: 80%;
   }
 `;
 
@@ -42,5 +42,23 @@ export const Lista = styled.section`
     color: ${titleGray};
     font-size: 32px;
     margin-top: 20px;
+  }
+`;
+
+export const Produtos = styled.section`
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 10px;
+  
+  @media(min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media(min-width: 1200px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media(min-width: 1440px) {
+    grid-template-columns: repeat(4, 1fr);
   }
 `;

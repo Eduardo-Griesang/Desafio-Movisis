@@ -1,4 +1,4 @@
-import { Container } from './styles';
+import { Container, Valor } from './styles';
 import { memo } from 'react';
 import { IconButton } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
@@ -18,11 +18,13 @@ function Produto({
       <Container>
         <div>
           <img
-            src={`/assets/${foto}.png`}
+            src={`/assets/${foto}.jpg`}
             alt={`foto de ${nome}`}
           />
+        </div>
+        <div>
           <p>
-            {nome} - R$ {valor?.toFixed(2)} <span>Kg</span>
+            {nome} - <h3>R$ {valor.toFixed(2)}</h3> 
           </p>
         </div>
         <div>

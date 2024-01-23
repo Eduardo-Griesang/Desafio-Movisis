@@ -2,8 +2,9 @@ import {
   Container,
   Header,
   Lista,
+  Produtos,
 } from './styles';
-import feira from './feira.json';
+import produtos from './produtos.json';
 import Produto from 'components/Produto';
 import NavBar from './NavBar';
 
@@ -14,20 +15,22 @@ function Feira() {
       <NavBar />
       <Header>
         <div>
-          <h2> Olá!</h2>
+          <h2>Olá!</h2>
         </div>
-        <p>Encontre os melhores produtos orgânicos!</p>
+        <p>Encontre os melhores produtos para seu setup!</p>
       </Header>
       <Lista>
         <h2>
           Produtos:
         </h2>
-        {feira.map(produto => (
-          <Produto
-            {...produto}
-            key={produto.id}
-          />
-        ))}
+        <Produtos>
+          {produtos.map(produto => (
+            <Produto
+              {...produto}
+              key={produto.id}
+            />
+          ))}
+        </Produtos>
       </Lista>
     </Container>
   )
