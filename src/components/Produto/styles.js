@@ -7,6 +7,7 @@ export const Container = styled(Card)`
   flex-direction: column;
   justify-content: space-between;
   padding: 20px 20px 0 20px;
+  position: relative;
   text-align: center;
   width: 100%;
   div {
@@ -29,4 +30,12 @@ export const Container = styled(Card)`
   img{
     width: 60%;
   }
+`;
+
+export const Data = styled.div`
+  color: #A3A3A3;
+  font-size: 12px;
+  position: absolute;
+  top: 3px;
+  left: 5px;
 `;

@@ -1,21 +1,20 @@
-import { Container, Valor } from './styles';
+import { Container, Data } from './styles';
 import { memo } from 'react';
 import { IconButton } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
 import { useCarrinhoContext } from 'common/contexts/Carrinho';
 
-function Produto({
-  nome,
-  foto,
-  id,
-  valor,
-  unidade
-}) {
+function Produto({ nome, foto, id, valor, data, unidade}) {
+
   const { carrinho, adicionarProduto, removerProduto } = useCarrinhoContext();
   const itemNoCarrinho = carrinho.find(item => item.id === id);
+
   return (
       <Container>
+        <Data>
+          {data}
+        </Data>
         <div>
           <img
             src={`/assets/${foto}.jpg`}
@@ -42,6 +41,7 @@ function Produto({
               foto,
               id,
               valor,
+              data,
               unidade
             })}
             color="primary"
