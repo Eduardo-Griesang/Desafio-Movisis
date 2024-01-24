@@ -14,12 +14,12 @@ export const Container = styled(Card)`
     justify-content: center;
     display: flex;
     gap: 20px;
-    p {
+    h3 {
       font-size: 22px;
       font-weight: bold;
       padding: 5px 0 0 5px;
     }
-    h3 {
+    p {
       display: inline-block;
       color: #2A9F85;
       font-size: 22px;

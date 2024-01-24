@@ -23,9 +23,9 @@ function Produto({
           />
         </div>
         <div>
-          <p>
-            {nome} - <h3>R$ {valor.toFixed(2)}</h3> 
-          </p>
+          <h3>
+            {nome} - <p>R$ {valor.toFixed(2)}</p> 
+          </h3>
         </div>
         <div>
           <IconButton

@@ -12,8 +12,8 @@ import { useEffect, useState } from 'react';
 function Store() {
 
   const [ filter, setFilter ] = useState("data de inclusão")
-
-  const [ produtos, setProdutos ] = useState([
+  const [ searchTerm, setSearchTerm ] = useState('');
+  const [ produtosOriginais, setProdutosOriginais ] = useState([
     {
       "nome": "Monitor Gamer Asus TUF",
       "foto": "monitor-gamer-asus",
@@ -71,20 +71,28 @@ function Store() {
       "id": "8"
     }
   ])
+  const [ produtos, setProdutos ] = useState([...produtosOriginais])
 
   useEffect(() => {
-    if ( filter === "preço decrescente" ){
-      setProdutos([...produtos].sort((a, b) => b.valor - a.valor))
-    } 
-    else if (filter === "preço crescente"){
-      setProdutos([...produtos].sort((a, b) => a.valor - b.valor))
-    }
-    else if (filter === 'ordem alfabética') {
-      setProdutos([...produtos].sort((a, b) => a.nome.localeCompare(b.nome)));
+    let sortedProdutos = [...produtosOriginais];
+
+    if (filter === "preço decrescente") {
+      sortedProdutos = sortedProdutos.sort((a, b) => b.valor - a.valor);
+    } else if (filter === "preço crescente") {
+      sortedProdutos = sortedProdutos.sort((a, b) => a.valor - b.valor);
+    } else if (filter === 'ordem alfabética') {
+      sortedProdutos = sortedProdutos.sort((a, b) => a.nome.localeCompare(b.nome));
     } else {
-      setProdutos([...produtos].sort((a, b) => new Date(a.data) - new Date(b.data)));
+      sortedProdutos = sortedProdutos.sort((a, b) => new Date(a.data) - new Date(b.data));
     }
-  }, [filter])
+
+    const filteredProdutos = sortedProdutos.filter(
+      (produto) => produto.nome.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    
+    setProdutos(filteredProdutos);
+
+  }, [filter, searchTerm, produtosOriginais])
 
   return (
     <Container>
@@ -95,7 +103,7 @@ function Store() {
         </div>
         <p>Encontre os melhores produtos para seu setup!</p>
       </Header>
-      <Filter ordenacao={setFilter} />
+      <Filter ordenacao={setFilter} search={searchTerm} setSearch={setSearchTerm} />
       <Lista>
         <h2>
           Produtos:
