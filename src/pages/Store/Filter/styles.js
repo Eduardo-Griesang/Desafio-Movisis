@@ -19,11 +19,13 @@ export const Container = styled.div`
   select{
     border: 1px solid #2A9F85;
     border-radius: 5px;
+    cursor: pointer;
     padding: 3px 10px;
   }
   input {
     border: 1px solid #2A9F85;
     border-radius: 5px;
+    cursor: pointer;
     padding: 3px 10px;
   }
 
