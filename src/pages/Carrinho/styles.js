@@ -49,3 +49,21 @@ export const TotalContainer = styled.section`
 export const PagamentoContainer = styled(FormControl)`
   width: 100%;
 `
+
+export const Produtos = styled.section`
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 10px;
+  
+  @media(min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media(min-width: 1200px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media(min-width: 1440px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+`

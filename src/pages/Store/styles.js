@@ -38,6 +38,7 @@ export const Lista = styled.section`
   flex-direction: column;
   gap: 10px;
   padding: 20px 0;
+  padding-top: 0;
   > h2 {
     color: ${titleGray};
     font-size: 32px;

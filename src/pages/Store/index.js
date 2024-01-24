@@ -4,12 +4,88 @@ import {
   Lista,
   Produtos,
 } from './styles';
-import produtos from './produtos.json';
 import Produto from 'components/Produto';
 import NavBar from './NavBar';
+import Filter from './Filter';
+import { useEffect, useState } from 'react';
 
+function Store() {
 
-function Feira() {
+  const [ filter, setFilter ] = useState("data de inclusão")
+
+  const [ produtos, setProdutos ] = useState([
+    {
+      "nome": "Monitor Gamer Asus TUF",
+      "foto": "monitor-gamer-asus",
+      "data": "27/01/24",
+      "valor": 1850.99,
+      "id": "1"
+    },
+    {
+      "nome": "PC Gamer Core I7, RTX 4090",
+      "foto": "computador-gamer",
+      "data": "27/01/24",
+      "valor": 32849.99,
+      "id": "2"
+    },
+    {
+      "nome": "Mouse Logitech G502",
+      "foto": "mouse-logitech",
+      "data": "27/01/24",
+      "valor": 599.00,
+      "id": "3"
+    },
+    {
+      "nome": "Teclado Razer Blackwidow",
+      "foto": "teclado-razer",
+      "data": "27/01/24",
+      "valor": 1699.99,
+      "id": "4"
+    },
+    {
+      "nome": "Headset HyperX Cloud Alpha",
+      "foto": "headset-hyperX",
+      "data": "27/01/24",
+      "valor": 999.99,
+      "id": "5"
+    },
+    {
+      "nome": "Mouse Pad Extra Grande Logitech",
+      "foto": "mousepad",
+      "data": "27/01/24",
+      "valor": 347.99,
+      "id": "6"
+    },
+    {
+      "nome": "Controle Microsoft Xbox",
+      "foto": "controle-xbox",
+      "data": "27/01/24",
+      "valor": 363.90,
+      "id": "7"
+    },
+    {
+      "nome": "Webcam Logitech C922",
+      "foto": "webcam",
+      "data": "27/01/24",
+      "valor": 662.31,
+      "id": "8"
+    }
+  ])
+
+  useEffect(() => {
+    if ( filter === "preço decrescente" ){
+      setProdutos([...produtos].sort((a, b) => b.valor - a.valor))
+    } 
+    else if (filter === "preço crescente"){
+      setProdutos([...produtos].sort((a, b) => a.valor - b.valor))
+    }
+    else if (filter === 'ordem alfabética') {
+      setProdutos([...produtos].sort((a, b) => a.nome.localeCompare(b.nome)));
+    } else {
+      setProdutos([...produtos].sort((a, b) => new Date(a.data) - new Date(b.data)));
+    }
+  }, [filter])
+
   return (
     <Container>
       <NavBar />
@@ -19,6 +95,7 @@ function Feira() {
         </div>
         <p>Encontre os melhores produtos para seu setup!</p>
       </Header>
+      <Filter ordenacao={setFilter} />
       <Lista>
         <h2>
           Produtos:
@@ -36,4 +113,4 @@ function Feira() {
   )
 }
 
-export default Feira;
+export default Store;

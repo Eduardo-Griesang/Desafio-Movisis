@@ -3,7 +3,7 @@ import MuiAlert from '@material-ui/lab/Alert';
 import { useCarrinhoContext } from 'common/contexts/Carrinho';
 import Produto from 'components/Produto';
 import { useState } from 'react';
-import { Container, Voltar, TotalContainer, PagamentoContainer} from './styles';
+import { Container, Voltar, TotalContainer, PagamentoContainer, Produtos } from './styles';
 import { useHistory } from 'react-router-dom';
 import { usePagamento } from 'common/contexts/Pagamento';
 
@@ -27,12 +27,14 @@ function Carrinho() {
       <h2>
         Carrinho
       </h2>
-      {carrinho.map((produto) => (
-        <Produto 
-          {...produto}
-          key={produto.id}
-        />
-      ))}
+      <Produtos>  
+        {carrinho.map((produto) => (
+          <Produto 
+            {...produto}
+            key={produto.id}
+          />
+        ))}
+      </Produtos>
       <PagamentoContainer>
         <InputLabel> Forma de Pagamento </InputLabel>
         <Select 
